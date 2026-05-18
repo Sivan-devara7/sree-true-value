@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
-  Car, LayoutDashboard, Plus, List, LogOut, Menu, X, ChevronRight, User
+  Car, LayoutDashboard, Plus, List, LogOut, Menu, X, ChevronRight, User as UserIcon
 } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import type { User } from '@supabase/supabase-js'
@@ -83,7 +83,7 @@ export default function AdminLayoutClient({ children, user }: Props) {
       <div className="p-4 border-t border-white/8">
         <div className="flex items-center gap-3 px-3 py-2 rounded-xl bg-white/5 mb-3">
           <div className="w-8 h-8 rounded-full bg-gold-500/20 flex items-center justify-center">
-            <User className="w-4 h-4 text-gold-500" />
+            <UserIcon className="w-4 h-4 text-gold-500" />
           </div>
           <div className="flex-1 min-w-0">
             <div className="text-xs font-medium text-white truncate">Admin</div>

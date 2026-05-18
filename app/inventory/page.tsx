@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, Suspense } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Search, SlidersHorizontal, X, LayoutGrid, List, Loader2, ChevronLeft, ChevronRight } from 'lucide-react'
 import { Car, CarFilters } from '@/types'
@@ -16,7 +16,7 @@ const SORT_OPTIONS = [
   { value: 'oldest', label: 'Oldest Year' },
 ]
 
-export default function InventoryPage() {
+function InventoryPageContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
 
@@ -275,5 +275,17 @@ export default function InventoryPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function InventoryPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-950 pt-20 flex items-center justify-center">
+        <Loader2 className="w-8 h-8 text-gold-500 animate-spin" />
+      </div>
+    }>
+      <InventoryPageContent />
+    </Suspense>
   )
 }

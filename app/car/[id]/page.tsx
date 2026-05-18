@@ -4,16 +4,17 @@ import { createClient } from '@/lib/supabase/server'
 import CarDetailClient from './_CarDetailClient'
 
 interface Props {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const supabase = await createClient()
+  const { id } = await params
 
   const { data: car } = await supabase
     .from('cars')
     .select('*')
-    .or(`slug.eq.${params.id},id.eq.${params.id}`)
+    .or(`slug.eq.${id},id.eq.${id}`)
     .single()
 
   if (!car) return { title: 'Car Not Found' }
@@ -66,7 +67,8 @@ async function getRelatedCars(car: { id: string; make: string; body_type: string
 }
 
 export default async function CarDetailPage({ params }: Props) {
-  const car = await getCar(params.id)
+  const { id } = await params
+  const car = await getCar(id)
 
   if (!car) notFound()
 

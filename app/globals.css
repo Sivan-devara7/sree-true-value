@@ -1,0 +1,459 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   CSS CUSTOM PROPERTIES
+   ============================================================ */
+:root {
+  --gold: #C8A84B;
+  --gold-light: #f3dc9b;
+  --gold-dark: #8a6820;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-card: #ffffff;
+  --text-primary: #0a0a0a;
+  --text-secondary: #6b7280;
+  --border: rgba(0, 0, 0, 0.08);
+  --shadow: rgba(0, 0, 0, 0.12);
+}
+
+.dark {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #111111;
+  --bg-card: #1a1a1a;
+  --text-primary: #f9fafb;
+  --text-secondary: #9ca3af;
+  --border: rgba(255, 255, 255, 0.08);
+  --shadow: rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================================
+   BASE STYLES
+   ============================================================ */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-feature-settings: 'kern' 1, 'liga' 1;
+}
+
+body {
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+.font-display {
+  font-family: 'Outfit', system-ui, sans-serif;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #C8A84B 0%, #f3dc9b 50%, #C8A84B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-white {
+  background: linear-gradient(135deg, #ffffff 0%, #e5e7eb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================================
+   GLASSMORPHISM UTILITIES
+   ============================================================ */
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.dark .glass-card-light {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-card-light {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* ============================================================
+   GOLD ACCENT UTILITIES
+   ============================================================ */
+.gold-border {
+  border: 1px solid rgba(200, 168, 75, 0.3);
+}
+
+.gold-border-hover:hover {
+  border-color: rgba(200, 168, 75, 0.7);
+}
+
+.gold-glow {
+  box-shadow: 0 0 30px rgba(200, 168, 75, 0.3), 0 0 60px rgba(200, 168, 75, 0.1);
+}
+
+.gold-glow-hover:hover {
+  box-shadow: 0 0 40px rgba(200, 168, 75, 0.4), 0 0 80px rgba(200, 168, 75, 0.15);
+}
+
+.gold-gradient {
+  background: linear-gradient(135deg, #C8A84B 0%, #f3dc9b 50%, #C8A84B 100%);
+}
+
+.gold-gradient-subtle {
+  background: linear-gradient(135deg, rgba(200, 168, 75, 0.1) 0%, rgba(243, 220, 155, 0.05) 100%);
+}
+
+/* ============================================================
+   BUTTON COMPONENTS
+   ============================================================ */
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-300 cursor-pointer;
+  background: linear-gradient(135deg, #C8A84B 0%, #f3dc9b 50%, #C8A84B 100%);
+  color: #0a0a0a;
+  box-shadow: 0 4px 20px rgba(200, 168, 75, 0.4);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(200, 168, 75, 0.5);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-300 cursor-pointer;
+  background: transparent;
+  border: 1px solid rgba(200, 168, 75, 0.5);
+  color: #C8A84B;
+}
+
+.btn-secondary:hover {
+  background: rgba(200, 168, 75, 0.1);
+  border-color: #C8A84B;
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-300 cursor-pointer;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: inherit;
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.btn-danger {
+  @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300 cursor-pointer;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+}
+
+.btn-danger:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: #ef4444;
+}
+
+/* ============================================================
+   CARD COMPONENTS
+   ============================================================ */
+.card {
+  @apply rounded-2xl transition-all duration-300;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 24px var(--shadow);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px var(--shadow);
+}
+
+.card-flat {
+  @apply rounded-2xl;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+}
+
+/* ============================================================
+   HERO SECTION
+   ============================================================ */
+.hero-gradient {
+  background: linear-gradient(
+    180deg,
+    rgba(10, 10, 10, 0.95) 0%,
+    rgba(10, 10, 10, 0.7) 50%,
+    rgba(10, 10, 10, 0.95) 100%
+  );
+}
+
+.hero-text-shadow {
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================================
+   SCROLLBAR STYLES
+   ============================================================ */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(200, 168, 75, 0.4);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(200, 168, 75, 0.7);
+}
+
+/* ============================================================
+   SWIPER OVERRIDES
+   ============================================================ */
+.swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.5) !important;
+  width: 8px !important;
+  height: 8px !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: #C8A84B !important;
+  width: 24px !important;
+  border-radius: 4px !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #C8A84B !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(8px) !important;
+  border-radius: 50% !important;
+  width: 44px !important;
+  height: 44px !important;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+}
+
+/* ============================================================
+   FORM STYLES
+   ============================================================ */
+.input-field {
+  @apply w-full px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 outline-none;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+}
+
+.input-field:focus {
+  border-color: rgba(200, 168, 75, 0.7);
+  box-shadow: 0 0 0 3px rgba(200, 168, 75, 0.1);
+}
+
+.input-field::placeholder {
+  color: var(--text-secondary);
+}
+
+.label {
+  @apply block text-sm font-medium mb-1.5;
+  color: var(--text-secondary);
+}
+
+/* ============================================================
+   BADGE COMPONENTS
+   ============================================================ */
+.badge {
+  @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold;
+}
+
+.badge-gold {
+  @apply badge;
+  background: linear-gradient(135deg, rgba(200, 168, 75, 0.2), rgba(243, 220, 155, 0.15));
+  color: #C8A84B;
+  border: 1px solid rgba(200, 168, 75, 0.3);
+}
+
+.badge-sold {
+  @apply badge;
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.badge-available {
+  @apply badge;
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+/* ============================================================
+   SECTION UTILITIES
+   ============================================================ */
+.section-padding {
+  @apply px-4 sm:px-6 lg:px-8;
+}
+
+.container-wide {
+  @apply max-w-7xl mx-auto;
+}
+
+.section-title {
+  @apply font-display text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight;
+}
+
+.section-subtitle {
+  @apply text-base sm:text-lg;
+  color: var(--text-secondary);
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.dark .shimmer {
+  background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+  background-size: 200% 100%;
+}
+
+/* ============================================================
+   WHATSAPP FLOAT BUTTON
+   ============================================================ */
+.whatsapp-fab {
+  @apply fixed bottom-6 right-6 z-50 flex items-center gap-3 px-4 py-3 rounded-full font-semibold text-sm text-white shadow-2xl transition-all duration-300;
+  background: #25d366;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp-fab:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
+}
+
+/* ============================================================
+   PAGE TRANSITIONS
+   ============================================================ */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 400ms ease, transform 400ms ease;
+}
+
+/* ============================================================
+   ADMIN SIDEBAR
+   ============================================================ */
+.admin-sidebar-item {
+  @apply flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm transition-all duration-200 cursor-pointer;
+  color: var(--text-secondary);
+}
+
+.admin-sidebar-item:hover {
+  background: rgba(200, 168, 75, 0.08);
+  color: var(--text-primary);
+}
+
+.admin-sidebar-item.active {
+  background: rgba(200, 168, 75, 0.12);
+  color: #C8A84B;
+}
+
+/* ============================================================
+   IMAGE UPLOADER
+   ============================================================ */
+.upload-zone {
+  @apply flex flex-col items-center justify-center p-8 rounded-2xl cursor-pointer transition-all duration-300;
+  border: 2px dashed rgba(200, 168, 75, 0.3);
+}
+
+.upload-zone:hover,
+.upload-zone.drag-over {
+  border-color: rgba(200, 168, 75, 0.7);
+  background: rgba(200, 168, 75, 0.05);
+}
+
+/* ============================================================
+   RESPONSIVE UTILITIES
+   ============================================================ */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ============================================================
+   STAT CARDS
+   ============================================================ */
+.stat-number {
+  @apply text-3xl sm:text-4xl font-display font-bold;
+  background: linear-gradient(135deg, #C8A84B, #f3dc9b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

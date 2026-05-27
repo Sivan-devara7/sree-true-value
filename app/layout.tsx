@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter, Outfit } from 'next/font/google'
+import Script from 'next/script'
 import './globals.css'
 import { ThemeProvider } from '@/components/layout/ThemeProvider'
 import Header from '@/components/layout/Header'
@@ -77,6 +78,12 @@ export default function RootLayout({
           </div>
           <WhatsAppFAB />
         </ThemeProvider>
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4360749671061816"
+          crossorigin="anonymous"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   )
